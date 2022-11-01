@@ -1,9 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
-// import { MovieDetails } from '../pages/MovieDetails';
+import { MovieDetails } from '../pages/MovieDetails';
+import { Cast } from '../components/MovieDetails/Cast';
+import { Reviews } from '../components/MovieDetails/Reviews';
 import { NotFound } from '../pages/NotFound';
 
 import { Container, Header, Logo, Link } from './App.styled';
@@ -30,8 +32,12 @@ export const App = () => {
       </Header>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/movies/*" element={<Movies />} />
-
+        <Route path="/movies/*" element={<Movies />}>
+          <Route path=":movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
