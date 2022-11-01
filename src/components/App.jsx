@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
@@ -13,32 +13,17 @@ import { Container, Header, Logo, Link } from './App.styled';
 export const App = () => {
   return (
     <Container>
-      <Header>
-        <Logo>
-          <img
-            src="../images/logo.svg"
-            alt="TMDB"
-            width="100%"
-            height="20"
-            display="block"
-          ></img>
-        </Logo>
-        <nav>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </Header>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/movies/*" element={<Movies />}>
-          <Route path=":movieId" element={<MovieDetails />}>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="movies/" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Container>
   );
