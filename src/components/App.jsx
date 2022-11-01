@@ -8,7 +8,7 @@ import { Cast } from '../components/MovieDetails/Cast';
 import { Reviews } from '../components/MovieDetails/Reviews';
 import { NotFound } from '../pages/NotFound';
 
-import { Container, Header, Logo, Link } from './App.styled';
+import { Container } from './App.styled';
 
 export const App = () => {
   return (
