@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
-import { MovieDetails } from '../pages/MovieDetails';
+// import { MovieDetails } from '../pages/MovieDetails';
 import { NotFound } from '../pages/NotFound';
 
 import { Container, Header, Logo, Link } from './App.styled';
