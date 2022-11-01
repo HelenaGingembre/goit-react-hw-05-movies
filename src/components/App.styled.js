@@ -21,9 +21,23 @@ export const Header = styled.header`
   }
 `;
 
-export const Logo = styled.p`
-  font-weight: 700;
-  margin: 0;
+export const Logo = styled.a`
+  color: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  //   margin: 0;
+  //   display: block;
+  //   width: 100%;
+  text-decoration: none;
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  padding: 8px 16px;
 `;
 
 export const Link = styled(NavLink)`

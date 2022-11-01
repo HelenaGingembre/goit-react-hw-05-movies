@@ -13,7 +13,13 @@ export const App = () => {
     <Container>
       <Header>
         <Logo>
-          <span role="img" aria-label="computer icon"></span> GoMovies Store
+          <img
+            src="../images/logo.svg"
+            alt="TMDB"
+            width="100%"
+            height="20"
+            display="block"
+          ></img>
         </Logo>
         <nav>
           <Link to="/" end>
