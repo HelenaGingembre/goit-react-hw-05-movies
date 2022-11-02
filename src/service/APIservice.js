@@ -11,7 +11,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '0753d31482992eaeca4a1269ff45804b';
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 
-export async function getPopularFilms() {
+export async function getTrendingFilms() {
   try {
     //https://api.themoviedb.org/3/trending/movie/day?api_key=<<api_key>>
     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&include_adult=true`;

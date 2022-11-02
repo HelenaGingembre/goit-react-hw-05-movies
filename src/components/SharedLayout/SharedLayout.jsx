@@ -8,7 +8,7 @@ export const SharedLayout = () => {
       <Header>
         <Logo>
           <img
-            src="../images/logo.svg"
+            src="../../images/logo.svg"
             alt="TMDB"
             width="100%"
             height="20"
