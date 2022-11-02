@@ -1,7 +1,3 @@
-import { Component } from 'react';
-import { useState } from 'react';
-// import { FiSearch } from 'react-icons/fi';
-
 import PropTypes from 'prop-types';
 import {
   SearchBoxContainer,
@@ -10,27 +6,24 @@ import {
   FiSearchIcon,
 } from './SearchBox.styled';
 
-export const SearchBox = () => {
-  const [query, setQuery] = useState('');
+export const SearchBox = ({ value, onChange, onSubmit }) => {
+  // const [query, setQuery] = useState('');
 
   const handleInput = event => {
-    setQuery(event.target.value);
+    onChange(event.target.value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const movie = {
-      query: query,
-    };
-
-    // getSearchFilms(query);
-
-    setQuery('');
-  };
+  //   const handleSubmit = event => {
+  //     event.preventDefault();
+  //  const movie = {
+  //       query: query,
+  //     };
+  //     // getSearchFilms(query);
+  //     setQuery('');
+  //   };
 
   return (
-    <SearchBoxContainer onSubmit={handleSubmit}>
+    <SearchBoxContainer onSubmit={onSubmit}>
       <Btn type="submit">
         <FiSearchIcon />
       </Btn>
@@ -40,12 +33,14 @@ export const SearchBox = () => {
         name="search"
         required
         autoFocus
-        value={query}
+        value={value}
       />
     </SearchBoxContainer>
   );
 };
 
 SearchBox.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
