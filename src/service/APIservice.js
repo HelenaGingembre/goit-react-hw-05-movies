@@ -22,11 +22,12 @@ export async function getTrendingFilms() {
     console.log('error: ', error.message);
   }
 }
-export async function getSearchFilms(searchQuery, page = 1) {
+export async function getSearchFilms(query, page = 1) {
   try {
     //https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query=Jack+Reacher
-    const url = `${SEARCH_URL}?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=${page}&include_adult=true`;
+    const url = `${SEARCH_URL}?api_key=${API_KEY}&language=en-US&query=${'cat'}&page=${page}&include_adult=true`;
     return await axios.get(url).then(response => {
+      console.log('getSearchFilms', response.data);
       return response.data;
     });
   } catch (error) {

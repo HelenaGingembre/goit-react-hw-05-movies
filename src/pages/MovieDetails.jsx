@@ -1,6 +1,6 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
-import { Cast } from '../components/MovieDetails/Cast';
-import { Reviews } from '../components/MovieDetails/Reviews';
+import { Outlet } from 'react-router-dom';
+// import { Cast } from '../components/MovieDetails/Cast';
+// import { Reviews } from '../components/MovieDetails/Reviews';
 
 export const MovieDetails = () => {
   return (

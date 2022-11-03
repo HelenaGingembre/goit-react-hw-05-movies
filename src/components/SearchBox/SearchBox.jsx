@@ -6,29 +6,20 @@ import {
   FiSearchIcon,
 } from './SearchBox.styled';
 
-export const SearchBox = ({ value, onChange, onSubmit }) => {
-  // const [query, setQuery] = useState('');
-
-  const handleInput = event => {
-    onChange(event.target.value);
-  };
-
-  //   const handleSubmit = event => {
-  //     event.preventDefault();
-  //  const movie = {
-  //       query: query,
-  //     };
-  //     // getSearchFilms(query);
-  //     setQuery('');
-  //   };
+export const SearchBox = ({ value, onChange, onClick }) => {
+  // const handleInput = event => {
+  //   onChange(event.target.value);
+  // };
 
   return (
-    <SearchBoxContainer onSubmit={onSubmit}>
+    <SearchBoxContainer onSubmit={onClick}>
       <Btn type="submit">
         <FiSearchIcon />
       </Btn>
       <InputSearch
-        onChange={handleInput}
+        onChange={e => {
+          onChange(e.target.value);
+        }}
         placeholder="Search for a movies, tv show ..."
         name="search"
         required
@@ -42,5 +33,5 @@ export const SearchBox = ({ value, onChange, onSubmit }) => {
 SearchBox.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

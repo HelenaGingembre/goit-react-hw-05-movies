@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     getTrendingFilms().then(data => {
-      console.log('data.results', data.results);
+      console.log('data.results-TrendingFilms', data.results);
       setTrendingMovies(data.results);
     });
   }, []);
