@@ -9,7 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Movies = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieSearchQuery = searchParams.get('query');
+
+  const movieSearchQuery = searchParams.get('query') ?? '';
 
   const [searchResult, setSearchResult] = useState('');
 
@@ -18,8 +19,8 @@ const Movies = () => {
     setSearchParams(nextParams);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    // e.preventDefault();
     // const form = e.currentTarget;
     // setSearchParams({ inputValue: form.elements.search.value });
 
@@ -33,27 +34,28 @@ const Movies = () => {
 
   useEffect(() => {
     if (movieSearchQuery === '') {
-      toast.error('Search term is empty. Enter something to search');
       setSearchResult('');
       return;
     }
+    console.log('movieSearchQuery', movieSearchQuery);
     getSearchFilms({ query: movieSearchQuery, page: 1 }).then(data => {
-      console.log('data.results', data);
-      console.log('movieSearchQuery', movieSearchQuery);
+      console.log('data.results', data.results);
+      // setSearchParams(data.results);
       setSearchResult(data.results);
     });
   }, [movieSearchQuery]);
 
+  console.log('searchResult', searchResult);
   return (
     <main>
       <h1>Movies Popular page</h1>
       <SearchBox
-        name="search"
+        // name="search"
         value={inputValue}
         onChange={setInputValue}
         onClick={handleSubmit}
       ></SearchBox>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       {searchResult !== '' ? (
         <MoviesList movies={searchResult} />
       ) : (

@@ -12,8 +12,8 @@ export const SearchBox = ({ value, onChange, onClick }) => {
   // };
 
   return (
-    <SearchBoxContainer onSubmit={onClick}>
-      <Btn type="submit">
+    <SearchBoxContainer>
+      <Btn type="button" onClick={onClick}>
         <FiSearchIcon />
       </Btn>
       <InputSearch
