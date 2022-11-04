@@ -7,7 +7,7 @@ import { MovieInfo } from '../components/MovieDetails/MovieInfo';
 // import { Reviews } from '../components/MovieDetails/Reviews';
 
 const MovieDetails = () => {
-  const { id } = useParams();
+  const { movieId } = useParams();
 
   // const movie = getFilmById(id);
   const location = useLocation();
@@ -19,8 +19,8 @@ const MovieDetails = () => {
   const [release, setRelease] = useState('');
 
   useEffect(() => {
-    getFilmById({ id }).then(movie => {
-      console.log('data  id', id);
+    getFilmById(movieId).then(movie => {
+      console.log('data  id', movieId);
       console.log('data movie id', movie);
       setDataMovie(movie);
       setImageMovie(`https://image.tmdb.org/t/p/w300${movie.poster_path}`);
@@ -29,7 +29,7 @@ const MovieDetails = () => {
       );
       setRelease(movie.release_date.slice(0, 7));
     });
-  }, [id]);
+  }, [movieId]);
 
   return (
     <main>
