@@ -38,15 +38,15 @@ const Movies = () => {
       return;
     }
     const page = 1;
-    console.log('movieSearchQuery', movieSearchQuery);
+    // console.log('movieSearchQuery', movieSearchQuery);
     getSearchFilms(movieSearchQuery, page).then(data => {
-      console.log('data.results', data.results);
-      // setSearchParams(data.results);
+      console.log('data.results-  getSearchFilms-', data.results);
+
       setSearchResult(data.results);
     });
   }, [movieSearchQuery]);
 
-  console.log('searchResult', searchResult);
+  // console.log('searchResult', searchResult);
   return (
     <main>
       <h1>Movies Popular page</h1>
@@ -61,8 +61,7 @@ const Movies = () => {
         <MoviesList movies={searchResult} />
       ) : (
         <h3>
-          There are no movies that matched your query.... Enter a query in the
-          search
+          There are no movies that matched your query.... Try to find something
         </h3>
       )}
       <Outlet></Outlet>

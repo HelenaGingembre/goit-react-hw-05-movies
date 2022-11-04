@@ -27,7 +27,7 @@ export async function getSearchFilms(query, page = 1) {
     //https://api.themoviedb.org/3/search/movie?api_key={api_key}&language=en-US&query=Jack+Reacher
     const url = `${SEARCH_URL}?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=true`;
     return await axios.get(url).then(response => {
-      console.log('getSearchFilms', response.data);
+      // console.log('getSearchFilms', response.data);
       return response.data;
     });
   } catch (error) {
@@ -35,11 +35,12 @@ export async function getSearchFilms(query, page = 1) {
   }
 }
 
-export async function getFilmById(filmId) {
+export async function getFilmById(id) {
   try {
     //https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-    const url = `${BASE_URL}/movie/${filmId}?api_key=${API_KEY}&language=en-US&include_adult=true`;
+    const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
     return await axios.get(url).then(response => {
+      console.log('getFilmById', response.data);
       return response.data;
     });
   } catch (error) {

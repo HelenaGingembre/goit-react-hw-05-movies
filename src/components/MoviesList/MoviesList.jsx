@@ -10,7 +10,7 @@ export const MoviesList = ({ movies }) => {
     <Container>
       {movies.map(movie => (
         <MovieItem key={movie.id}>
-          <Link to={`movies/${movie.id}`} state={{ from: location }}>
+          <Link to={`${movie.id}`} state={{ from: location }}>
             <MovieTitle>{movie.title}</MovieTitle>
           </Link>
         </MovieItem>

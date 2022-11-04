@@ -1,10 +1,46 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getFilmById } from '../service/APIservice';
+import { BackLink } from '../components/BackLink/BackLink';
+import { MovieInfo } from '../components/MovieDetails/MovieInfo';
 // import { Cast } from '../components/MovieDetails/Cast';
 // import { Reviews } from '../components/MovieDetails/Reviews';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
+  const { id } = useParams();
+
+  // const movie = getFilmById(id);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+
+  const [dataMovie, setDataMovie] = useState({});
+  const [imageMovie, setImageMovie] = useState('');
+  const [arrayGenres, setArrayGenres] = useState('');
+  const [release, setRelease] = useState('');
+
+  useEffect(() => {
+    getFilmById({ id }).then(movie => {
+      console.log('data  id', id);
+      console.log('data movie id', movie);
+      setDataMovie(movie);
+      setImageMovie(`https://image.tmdb.org/t/p/w300${movie.poster_path}`);
+      setArrayGenres(
+        movie.genres.map(item => arrayGenres + `${item.name}`).join(', ')
+      );
+      setRelease(movie.release_date.slice(0, 7));
+    });
+  }, [id]);
+
   return (
     <main>
+      <BackLink to={backLinkHref}>Back to movies</BackLink>
+      <MovieInfo
+        dataMovie={dataMovie}
+        imageMovie={imageMovie}
+        arrayGenres={arrayGenres}
+        release={release}
+      />
+
       {/* <Routes> */}
       {/* { Cast i Reviews Рендерится на странице MovieDetails.} */}
       <Outlet></Outlet>
@@ -14,3 +50,5 @@ export const MovieDetails = () => {
     </main>
   );
 };
+
+export default MovieDetails;

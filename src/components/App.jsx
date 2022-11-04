@@ -3,7 +3,7 @@ import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
-import { MovieDetails } from '../pages/MovieDetails';
+import MovieDetails from '../pages/MovieDetails';
 import { Cast } from '../components/MovieDetails/Cast';
 import { Reviews } from '../components/MovieDetails/Reviews';
 import { NotFound } from '../pages/NotFound';
