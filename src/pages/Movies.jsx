@@ -37,8 +37,9 @@ const Movies = () => {
       setSearchResult('');
       return;
     }
+    const page = 1;
     console.log('movieSearchQuery', movieSearchQuery);
-    getSearchFilms({ query: movieSearchQuery, page: 1 }).then(data => {
+    getSearchFilms(movieSearchQuery, page).then(data => {
       console.log('data.results', data.results);
       // setSearchParams(data.results);
       setSearchResult(data.results);
@@ -59,7 +60,10 @@ const Movies = () => {
       {searchResult !== '' ? (
         <MoviesList movies={searchResult} />
       ) : (
-        <h3>There are no movies to show... Enter a query in the search</h3>
+        <h3>
+          There are no movies that matched your query.... Enter a query in the
+          search
+        </h3>
       )}
       <Outlet></Outlet>
 
