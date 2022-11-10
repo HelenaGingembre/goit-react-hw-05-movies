@@ -23,12 +23,12 @@ export const Header = styled.header`
 
 export const Logo = styled.a`
   text-decoration: none;
-  color: white;
-  background-image: linear-gradient(
-    to right,
-    rgba(30, 213, 169, 1) 0%,
-    rgba(1, 180, 228, 1) 100%
-  );
+  // color: white;
+  // background-image: linear-gradient(
+  //   to right,
+  //   rgba(30, 213, 169, 1) 0%,
+  //   rgba(1, 180, 228, 1) 100%
+  // );
   padding: 8px 16px;
 `;
 
