@@ -20,13 +20,12 @@ const MovieDetails = () => {
 
   useEffect(() => {
     getFilmById(movieId).then(movie => {
-      console.log('data  id', movieId);
-      console.log('data movie id', movie);
+      // console.log('data  id', movieId);
+      // console.log('data movie id', movie);
       setDataMovie(movie);
-      setImageMovie(`https://image.tmdb.org/t/p/w300${movie.poster_path}`);
-      setArrayGenres(
-        movie.genres.map(item => arrayGenres + `${item.name}`).join(', ')
-      );
+      setImageMovie(`https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+      console.log('movie.genres', movie.genres);
+      setArrayGenres(movie.genres.map(item => item.name).join(', '));
       setRelease(movie.release_date.slice(0, 7));
     });
   }, [movieId]);
@@ -40,20 +39,21 @@ const MovieDetails = () => {
         arrayGenres={arrayGenres}
         release={release}
       />
+
+      <h3>Additional info:</h3>
+      <ul>
+        <li>
+          <Link to="cast" state={{ from: location.state?.from }}>
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link to="reviews" state={{ from: location.state?.from }}>
+            Reviews
+          </Link>
+        </li>
+      </ul>
       <Suspense fallback={<div>Loading...</div>}>
-        <h3>Additional info:</h3>
-        <ul>
-          <li>
-            <Link to="cast" state={{ from: location.state?.from }}>
-              Cast
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" state={{ from: location.state?.from }}>
-              Reviews
-            </Link>
-          </li>
-        </ul>
         <Outlet></Outlet>
       </Suspense>
     </main>

@@ -26,7 +26,6 @@ const Cast = () => {
           </li>
         ))
       );
-      // setCastLength(movie.cast.length);
     });
   }, [movieId]);
 
