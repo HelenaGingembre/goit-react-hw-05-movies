@@ -10,7 +10,7 @@ export const MovieInfo = ({ dataMovie, imageMovie, arrayGenres, release }) => {
         <p>{`User score: ${(dataMovie.vote_average * 10).toFixed(2)}%`}</p>
         <h3>Overview</h3>
         <p>{`${dataMovie.overview}`}</p>
-        <h4>Genres</h4>
+        <h3>Genres</h3>
         <p>{arrayGenres}</p>
       </CardBox>
     </Container>

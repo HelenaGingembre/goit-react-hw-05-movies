@@ -1,10 +1,10 @@
-import { Outlet, useParams, useLocation } from 'react-router-dom';
+import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getFilmById } from '../service/APIservice';
 import { BackLink } from '../components/BackLink/BackLink';
 import { MovieInfo } from '../components/MovieDetails/MovieInfo';
-// import { Cast } from '../components/MovieDetails/Cast';
-// import { Reviews } from '../components/MovieDetails/Reviews';
+import { Cast } from '../components/MovieDetails/Cast';
+import { Reviews } from '../components/MovieDetails/Reviews';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -40,7 +40,19 @@ const MovieDetails = () => {
         arrayGenres={arrayGenres}
         release={release}
       />
-
+      <h3>Additional info:</h3>
+      <ul>
+        <li>
+          <Link to="cast" state={{ from: location.state?.from }}>
+            Cast
+          </Link>
+        </li>
+        <li>
+          <Link to="reviews" state={{ from: location.state?.from }}>
+            Reviews
+          </Link>
+        </li>
+      </ul>
       {/* <Routes> */}
       {/* { Cast i Reviews Рендерится на странице MovieDetails.} */}
       <Outlet></Outlet>
