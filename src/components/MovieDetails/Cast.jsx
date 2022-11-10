@@ -26,7 +26,7 @@ export const Cast = () => {
   return (
     <main>
       <h2>Cast:</h2>
-      <ul>{castLength !== 0 ? castHtml : 'No cast info for this movie'}</ul>
+      <ul>{castLength !== 0 ? castHtml : 'No cast info for this film'}</ul>
     </main>
   );
 };
