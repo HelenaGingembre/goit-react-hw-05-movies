@@ -6,7 +6,6 @@ export const Cast = () => {
   const { movieId } = useParams();
 
   const [cast, setCast] = useState('');
-  // const [castLength, setCastLength] = useState(0);
 
   useEffect(() => {
     getCreditsFilmById(movieId).then(movie => {

@@ -1,10 +1,10 @@
 import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { getFilmById } from '../service/APIservice';
-import { BackLink } from '../components/BackLink/BackLink';
+// import { BackLink } from '../components/BackLink/BackLink';
 import { MovieInfo } from '../components/MovieDetails/MovieInfo';
 
-const Back = lazy(() => import('../components/BackLink/BackLink'));
+const BackLink = lazy(() => import('../components/BackLink/BackLink'));
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -33,9 +33,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref} element={Back}>
-        Back to movies
-      </BackLink>
+      <BackLink to={backLinkHref}>Back to movies</BackLink>
       <MovieInfo
         dataMovie={dataMovie}
         imageMovie={imageMovie}

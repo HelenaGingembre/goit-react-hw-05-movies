@@ -5,12 +5,11 @@ import { useState, useEffect } from 'react';
 export const Reviews = () => {
   const { movieId } = useParams();
 
-  const [reviewsHtml, setReviewsHtml] = useState('');
-  const [reviewsLength, setReviewsLength] = useState(0);
+  const [reviews, setReviews] = useState('');
 
   useEffect(() => {
     getReviewsFilmById(movieId).then(movie => {
-      setReviewsHtml(
+      setReviews(
         movie.results.map(itemReviews => (
           <li key={itemReviews.id}>
             <h3> Author:{itemReviews.author}</h3>
@@ -18,7 +17,6 @@ export const Reviews = () => {
           </li>
         ))
       );
-      setReviewsLength(movie.results.length);
     });
   }, [movieId]);
 
@@ -26,7 +24,7 @@ export const Reviews = () => {
     <main>
       <h1> Reviews page</h1>
       <ul>
-        {reviewsLength !== 0 ? reviewsHtml : 'No Reviews info for this film'}
+        {reviews.length !== 0 ? reviews : 'No Reviews info for this film'}
       </ul>
     </main>
   );
