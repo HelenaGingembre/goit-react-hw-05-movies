@@ -55,6 +55,7 @@ export async function getCreditsFilmById(filmId) {
     //https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
     const url = `${BASE_URL}/movie/${filmId}/credits?api_key=${API_KEY}&language=en-US`;
     return await axios.get(url).then(response => {
+      console.log('getCreditsFilmById', response.data);
       return response.data;
     });
   } catch (error) {
@@ -69,6 +70,7 @@ export async function getReviewsFilmById(filmId) {
   try {
     const url = `${BASE_URL}/movie/${filmId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
     return await axios.get(url).then(response => {
+      console.log('getReviewsFilmById', response.data);
       return response.data;
     });
   } catch (error) {

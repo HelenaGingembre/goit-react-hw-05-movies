@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { getFilmById } from '../service/APIservice';
 import { BackLink } from '../components/BackLink/BackLink';
 import { MovieInfo } from '../components/MovieDetails/MovieInfo';
-import { Cast } from '../components/MovieDetails/Cast';
-import { Reviews } from '../components/MovieDetails/Reviews';
+// import { Cast } from '../components/MovieDetails/Cast';
+// import { Reviews } from '../components/MovieDetails/Reviews';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
