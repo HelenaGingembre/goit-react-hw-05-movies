@@ -13,7 +13,15 @@ export const Cast = () => {
       setCastHtml(
         movie.cast.map(itemCast => (
           <li key={itemCast.cast_id}>
-            <img></img>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${itemCast.profile_path}`}
+              alt={`Actor - ${itemCast.name}`}
+              onError={e => {
+                e.target.src =
+                  'https://via.placeholder.com/96x80?text=NO+PHOTO!';
+              }}
+              width="15%"
+            />
             <p>{itemCast.name}</p>
             <p>Character:{itemCast.character}</p>
           </li>
