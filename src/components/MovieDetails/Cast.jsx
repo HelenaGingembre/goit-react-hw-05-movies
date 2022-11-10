@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 export const Cast = () => {
   const { movieId } = useParams();
 
-  const [castHtml, setCastHtml] = useState('');
-  const [castLength, setCastLength] = useState(0);
+  const [cast, setCast] = useState('');
+  // const [castLength, setCastLength] = useState(0);
 
   useEffect(() => {
     getCreditsFilmById(movieId).then(movie => {
-      setCastHtml(
+      setCast(
         movie.cast.map(itemCast => (
           <li key={itemCast.cast_id}>
             <img
@@ -27,14 +27,14 @@ export const Cast = () => {
           </li>
         ))
       );
-      setCastLength(movie.cast.length);
+      // setCastLength(movie.cast.length);
     });
   }, [movieId]);
 
   return (
     <main>
       <h2>Cast:</h2>
-      <ul>{castLength !== 0 ? castHtml : 'No cast info for this film'}</ul>
+      <ul>{cast.length !== 0 ? cast : 'No cast info for this film'}</ul>
     </main>
   );
 };

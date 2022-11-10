@@ -1,10 +1,10 @@
 import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { getFilmById } from '../service/APIservice';
 import { BackLink } from '../components/BackLink/BackLink';
 import { MovieInfo } from '../components/MovieDetails/MovieInfo';
-// import { Cast } from '../components/MovieDetails/Cast';
-// import { Reviews } from '../components/MovieDetails/Reviews';
+
+const Back = lazy(() => import('../components/BackLink/BackLink'));
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -33,32 +33,31 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>Back to movies</BackLink>
+      <BackLink to={backLinkHref} element={Back}>
+        Back to movies
+      </BackLink>
       <MovieInfo
         dataMovie={dataMovie}
         imageMovie={imageMovie}
         arrayGenres={arrayGenres}
         release={release}
       />
-      <h3>Additional info:</h3>
-      <ul>
-        <li>
-          <Link to="cast" state={{ from: location.state?.from }}>
-            Cast
-          </Link>
-        </li>
-        <li>
-          <Link to="reviews" state={{ from: location.state?.from }}>
-            Reviews
-          </Link>
-        </li>
-      </ul>
-      {/* <Routes> */}
-      {/* { Cast i Reviews Рендерится на странице MovieDetails.} */}
-      <Outlet></Outlet>
-      {/* <Route path="/movies/:movieId/cast" element={<Cast />} />
-        <Route path="/movies/:movieId/reviews" element={<Reviews />} /> */}
-      {/* </Routes> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <h3>Additional info:</h3>
+        <ul>
+          <li>
+            <Link to="cast" state={{ from: location.state?.from }}>
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link to="reviews" state={{ from: location.state?.from }}>
+              Reviews
+            </Link>
+          </li>
+        </ul>
+        <Outlet></Outlet>
+      </Suspense>
     </main>
   );
 };

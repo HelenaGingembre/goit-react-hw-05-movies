@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 import { MoviesList } from '../components/MoviesList/MoviesList';
 import { SearchBox } from '../components/SearchBox/SearchBox';
@@ -51,24 +51,22 @@ const Movies = () => {
     <main>
       <h1>Movies Popular page</h1>
       <SearchBox
-        // name="search"
         value={inputValue}
         onChange={setInputValue}
         onClick={handleSubmit}
       ></SearchBox>
       <ToastContainer autoClose={2000} />
-      {searchResult !== '' ? (
-        <MoviesList movies={searchResult} />
-      ) : (
-        <h3>
-          There are no movies that matched your query.... Try to find something
-        </h3>
-      )}
-      <Outlet></Outlet>
-
-      {/* <Routes>
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-      </Routes> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        {searchResult !== '' ? (
+          <MoviesList movies={searchResult} />
+        ) : (
+          <h3>
+            There are no movies that matched your query.... Try to find
+            something
+          </h3>
+        )}
+        <Outlet></Outlet>
+      </Suspense>
     </main>
   );
 };
